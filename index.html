@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Taskmanager with Laravel and VueJS</title>
+</head>
+<body>
+    <div class="">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+            <div class="container">
+                <a class="navbar-brand" href="#">TaskManger</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div class="container mt-4">
+            <form class="form-inline pb-2">
+                <div class="form-group mb-2 mr-4">
+                    <label for="taskName" class="sr-only">Task</label>
+                    <input type="text" class="form-control" id="taskName" placeholder="Task name">
+                </div>
+                <div class="form-group mr-4">
+                    <label for="taskProject" class="sr-only">Project</label>
+                    <select id="taskProject" class="form-control">
+                        <option hidden>Choose a project</option>
+                        <option>Project 1</option>
+                        <option>Project 2</option>
+                        <option>Project 3</option>
+                    </select>
+                </div>
+                <div class="form-group mr-4">
+                    <label for="statusTask" class="sr-only">Status</label>
+                    <select id="statusTask" class="form-control">
+                        <option hidden>Choose a status</option>
+                        <option>Unstarted</option>
+                        <option>Inprogress</option>
+                        <option>Completed</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Save</button>
+            </form>
+            <form class="form-inline">
+                <div class="form-group mb-2 mr-4">
+                    <label for="projectName" class="sr-only">Project</label>
+                    <input type="text" class="form-control" id="projectName" placeholder="Project name">
+                </div>
+                <div class="form-group mr-4">
+                    <label for="statusProject" class="sr-only">Status</label>
+                    <select id="statusProject" class="form-control">
+                        <option hidden>Choose a status</option>
+                        <option>Unstarted</option>
+                        <option>Inprogress</option>
+                        <option>Completed</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Save</button>
+            </form>
+        </div>
+        <div class="container mt-4">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active" id="pills-task-tab" data-toggle="pill" href="#pills-task" role="tab" aria-controls="pills-task" aria-selected="true">Tasks</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link" id="pills-project-tab" data-toggle="pill" href="#pills-project" role="tab" aria-controls="pills-project" aria-selected="false">Projects</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-task" role="tabpanel" aria-labelledby="pills-task-tab">
+                    <h3 class="mb-3">All Tasks</h3>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Project Name</th>
+                            <th scope="col" >Status</th>
+                            <th scope="col" width="18%">Other</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Task 1</td>
+                            <td>Project 1</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                    <div class="btn-group" role="group">
+                                        <button id="editTask" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Edit
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="editTask">
+                                            <a class="dropdown-item" href="#">Show</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Task 2</td>
+                            <td>Project 2</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                    <div class="btn-group" role="group">
+                                        <button id="editTask" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Edit
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="editTask">
+                                            <a class="dropdown-item" href="#">Show</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="pills-project" role="tabpanel" aria-labelledby="pills-project-tab">
+                    <h3>All Projects</h3>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Project</th>
+                            <th scope="col">Task Name</th>
+                            <th scope="col" >Status</th>
+                            <th scope="col" width="18%">Other</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Project 1</td>
+                            <td>Task 1</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                    <div class="btn-group" role="group">
+                                        <button id="editProject" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Edit
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="editProject">
+                                            <a class="dropdown-item" href="#">Show</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Project 2</td>
+                            <td>Task 2</td>
+                            <td><span class="badge badge-success">Completed</span></td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                    <div class="btn-group" role="group">
+                                        <button id="editProject" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Edit
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="editProject">
+                                            <a class="dropdown-item" href="#">Show</a>
+                                            <a class="dropdown-item" href="#">Edit</a>
+                                            <a class="dropdown-item" href="#">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="js/jquery.slim.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
